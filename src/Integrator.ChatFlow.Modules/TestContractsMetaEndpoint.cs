@@ -4,11 +4,9 @@ using Integrator.ChatFlow.Domain.Aggregates.FlowAggregate.Headers;
 using Integrator.ChatFlow.Domain.Aggregates.FlowAggregate.Nodes;
 using Integrator.ChatFlow.Domain.Aggregates.FlowAggregate.ValuesObject;
 using Integrator.ChatFlow.Modules.Features.FlowCreate;
-using Integrator.ChatFlow.Modules.Features.FlowCreate.Options.TextOption;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using TextContent = Integrator.ChatFlow.Modules.Features.FlowCreate.Options.TextOption.TextContent;
 
 namespace Integrator.ChatFlow.Modules;
 
@@ -107,10 +105,16 @@ public static class TestContractsMetaEndpoint
         {
             endpoint.MapGet("/text-option", () =>
             {
-                var text = new TextOptionDto("5511999999999", new TextContent(
-                    Body: "Olá! Este é um texto de exemplo."
-                ));
-                return Results.Ok(text);
+                var textNode = new TextNode(
+                    "text_node_1",
+                    "Texto de Exemplo",
+                    "Aqui está um texto de exemplo para você.",
+                    new TextContent()
+                );
+
+                var textOptionDto = textNode.MapNodeToDto("+16505551234");
+
+                return Results.Ok(textOptionDto);
             });
 
             return endpoint;

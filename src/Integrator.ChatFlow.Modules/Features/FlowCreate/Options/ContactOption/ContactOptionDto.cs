@@ -4,5 +4,6 @@ namespace Integrator.ChatFlow.Modules.Features.FlowCreate.Options.ContactOption;
 
 public record ContactOptionDto(
     string To,
-    [property: JsonPropertyName("contacts")] List<ContactDto> Contacts
-) : MessageBaseDto(To, "contacts");
+    [property: JsonPropertyName("contacts")]
+    List<ContactDto> Contacts
+) : MessageBaseDto("whatsapp", null, To, "contacts");

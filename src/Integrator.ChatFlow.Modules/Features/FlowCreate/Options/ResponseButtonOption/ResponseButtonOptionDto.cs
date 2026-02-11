@@ -7,4 +7,4 @@ public record ResponseButtonOptionDto(
     [property: JsonPropertyName("interactive")]
     InteractiveButtonDto Interactive
 )
-    : MessageBaseDto(To, "interactive", RecipientType: "individual");
+    : MessageBaseDto("whatsapp", "individual", To, "interactive");

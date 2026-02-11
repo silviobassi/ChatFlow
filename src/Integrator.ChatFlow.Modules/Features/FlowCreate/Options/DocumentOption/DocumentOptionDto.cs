@@ -6,4 +6,4 @@ public record DocumentOptionDto(
     string To,
     [property: JsonPropertyName("document")]
     DocumentContentDto Document
-) : MessageBaseDto(To, "document", RecipientType: "individual");
+) : MessageBaseDto("whatsapp", "individual", To, "document");
