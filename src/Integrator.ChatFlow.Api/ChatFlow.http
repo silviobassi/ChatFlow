@@ -1,0 +1,21 @@
+@ChatFlow = http://localhost:5246
+
+GET {{ChatFlow}}/list-button-option
+Accept: application/json
+###
+
+GET {{ChatFlow}}/response-button-option
+Accept: application/json
+###
+
+GET {{ChatFlow}}/contact-option
+Accept: application/json
+###
+
+GET {{ChatFlow}}/text-option
+Accept: application/json
+###
+
+GET {{ChatFlow}}/document-option
+Accept: application/json
+###
