@@ -8,7 +8,7 @@ internal static class HeaderMapper
 {
     extension(Header? header)
     {
-        public object? ToDto() => header switch
+        public HeaderDto? ToDto() => header switch
         {
             HeaderText t => new HeaderTextDto(t.Value),
             HeaderImageUrl img => new HeaderImageLinkDto(new ImageLinkDto(img.Value)),

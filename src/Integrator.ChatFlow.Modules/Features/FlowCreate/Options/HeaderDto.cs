@@ -3,17 +3,22 @@ using Integrator.ChatFlow.Modules.Features.FlowCreate.Options.ResponseButtonOpti
 
 namespace Integrator.ChatFlow.Modules.Features.FlowCreate.Options;
 
+[JsonDerivedType(typeof(HeaderTextDto))]
+[JsonDerivedType(typeof(HeaderImageLinkDto))]
+[JsonDerivedType(typeof(HeaderImageIdDto))]
+public record HeaderDto([property: JsonPropertyName("type")] string Type);
+
 public record HeaderTextDto(
     [property: JsonPropertyName("text")] string Text,
     [property: JsonPropertyName("type")] string Type = "text"
-);
+) : HeaderDto(Type);
 
 public record HeaderImageLinkDto(
     [property: JsonPropertyName("image")] ImageLinkDto Image,
-    [property: JsonPropertyName("type")] string Type = "image"
-);
+    string Type = "image"
+) : HeaderDto(Type);
 
 public record HeaderImageIdDto(
     [property: JsonPropertyName("image")] ImageIdDto Image,
-    [property: JsonPropertyName("type")] string Type = "image"
-);
+    string Type = "image"
+) : HeaderDto(Type);

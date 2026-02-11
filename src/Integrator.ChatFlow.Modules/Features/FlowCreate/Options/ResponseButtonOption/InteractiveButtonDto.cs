@@ -4,5 +4,5 @@ public record InteractiveButtonDto(
     BodyDto Body,
     ActionResponseButtonDto Action,
     FooterDto? Footer,
-    object? Header
+    HeaderDto? Header
 ) : InteractiveBaseDto("button", Body, Footer, Header);

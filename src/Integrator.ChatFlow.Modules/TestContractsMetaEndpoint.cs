@@ -4,7 +4,6 @@ using Integrator.ChatFlow.Domain.Aggregates.FlowAggregate.Headers;
 using Integrator.ChatFlow.Domain.Aggregates.FlowAggregate.Nodes;
 using Integrator.ChatFlow.Domain.Aggregates.FlowAggregate.ValuesObject;
 using Integrator.ChatFlow.Modules.Features.FlowCreate;
-using Integrator.ChatFlow.Modules.Features.FlowCreate.Options.DocumentOption;
 using Integrator.ChatFlow.Modules.Features.FlowCreate.Options.TextOption;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -68,7 +67,7 @@ public static class TestContractsMetaEndpoint
                         new ButtonReply("reply1", "Resposta 1"),
                         new ButtonReply("reply2", "Resposta 2")
                     ],
-                    Header: new HeaderImageUrl("https://example.com/header-image.jpg"),
+                    Header: new HeaderImageId("2924382942849"),
                     FooterText: new FooterText("Selecione uma resposta para continuar")
                 );
 
@@ -85,13 +84,20 @@ public static class TestContractsMetaEndpoint
         {
             endpoint.MapGet("/document-option", () =>
             {
-                var document = new DocumentOptionDto("5511999999999", new DocumentContentDto(
-                    Id: "doc_id",
-                    Caption: "Documento de exemplo",
-                    FileName: "document.pdf"
-                ));
+                var documentNode = new DocumentNode(
+                    NodeId: "opcoes_menu_1",
+                    Name: "Documento de Exemplo",
+                    MessageText: "Aqui está um documento de exemplo para você.",
+                    DocumentContent: new DocumentContent(
+                        Filename: "opcoes_menu_1.docx",
+                        Media: new DocumentId("292384092384"),
+                        Caption: "Este é um documento de exemplo."
+                    )
+                );
 
-                return Results.Ok(document);
+                var documentOptionDto = documentNode.MapNodeToDto("+16505551234");
+
+                return Results.Ok(documentOptionDto);
             });
 
             return endpoint;

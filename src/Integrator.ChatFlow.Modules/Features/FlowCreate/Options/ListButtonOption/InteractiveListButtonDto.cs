@@ -6,5 +6,5 @@ public record InteractiveListButtonDto(
     BodyDto Body,
     [property: JsonPropertyName("action")] ActionListButtonDto Action,
     FooterDto? Footer,
-    object? Header
+    HeaderDto? Header
 ) : InteractiveBaseDto("list", Body, Footer, Header);
