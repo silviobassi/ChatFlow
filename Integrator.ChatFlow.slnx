@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="src/Integrator.ChatFlow.Api/Integrator.ChatFlow.Api.csproj" />
-  <Project Path="src/Integrator.ChatFlow.Domain/Integrator.ChatFlow.Domain.csproj" />
-  <Project Path="src/Integrator.ChatFlow.Modules/Integrator.ChatFlow.Modules.csproj" />
-</Solution>
