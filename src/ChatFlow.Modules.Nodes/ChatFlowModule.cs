@@ -1,6 +1,6 @@
 ﻿using ChatFlow.Domain.Aggregates.FlowAggregate.Repositories;
 using ChatFlow.Infrastructure.Persistence.MongoDb;
-using ChatFlow.Modules.Nodes.Features.AddChatNode;
+using ChatFlow.Modules.Nodes.Features.AddContactNode;
 using ChatFlow.Modules.Nodes.Features.FlowCreate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
@@ -64,7 +64,8 @@ public static class ChatNodeFeatures
                 .MapResponseButtonEndpoint()
                 .MapTextEndpoint()
                 .MapDocumentEndpoint()
-                .MapNodeUpdateEndpoint();
+                .MapNodeUpdateEndpoint()
+                .MapAddContactNodeEndpoints();
         }
     }
 }

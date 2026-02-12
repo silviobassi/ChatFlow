@@ -2,24 +2,48 @@
 
 GET {{ChatFlow}}/list-button-option
 Accept: application/json
+
 ###
 
 GET {{ChatFlow}}/response-button-option
 Accept: application/json
+
 ###
 
 GET {{ChatFlow}}/contact-option
 Accept: application/json
+
 ###
 
 GET {{ChatFlow}}/text-option
 Accept: application/json
+
 ###
 
 GET {{ChatFlow}}/document-option
 Accept: application/json
+
 ###
 
 GET {{ChatFlow}}//node/update
 Accept: application/json
+
+###ó
+
+POST {{ChatFlow}}/add-contact-node
+Content-Type: application/json
+
+{
+  "FlowId": "fluxo_teste_2",
+  "NodeId": "node_457",
+  "Name": "Contact Node Example",
+  "MessageText": "Here are the contact details",
+  "FormattedName": "João Silva",
+  "FirstName": "João",
+  "LastName": "Silva",
+  "Phones": [
+    { "WaId": "5511999999999", "Type": "mobile" }
+  ]
+}
+
 ###

@@ -3,7 +3,7 @@ using ChatFlow.Domain.Aggregates.FlowAggregate.Nodes;
 using ChatFlow.Domain.Aggregates.FlowAggregate.Repositories;
 using MongoDB.Driver;
 
-namespace ChatFlow.Modules.Nodes.Features.AddChatNode;
+namespace ChatFlow.Modules.Nodes.Features.AddContactNode;
 
 public class ChatNodeRepository(IMongoDatabase database) : IChatNodeRepository
 {
