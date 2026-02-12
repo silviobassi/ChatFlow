@@ -5,6 +5,7 @@ namespace ChatFlow.Domain.Aggregates.FlowAggregate;
 public sealed record ChatFlowRoot(
     string Id,          // Identificador do Fluxo (ex: "onboarding_v1")
     string Name,        // Nome legível (ex: "Fluxo de Onboarding 2026")
+    // criar propriedade para mapear campanhas ADS
     string TriggerKeyword, // Palavra-chave que inicia este fluxo (ex: "oi", "menu")
     bool IsActive
 )
@@ -25,4 +26,13 @@ public sealed record ChatFlowRoot(
     }
 
     // Método para remover nós, etc...
+    public void RemoveNode(string nodeId)
+    {
+        var node = _nodes.FirstOrDefault(n => n.NodeId == nodeId);
+        if (node == null)
+        {
+            throw new InvalidOperationException($"O nó '{nodeId}' não existe neste fluxo.");
+        }
+        _nodes.Remove(node);
+    }
 }

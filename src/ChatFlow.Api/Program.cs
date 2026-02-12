@@ -13,8 +13,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
-    options.SerializerOptions.DefaultIgnoreCondition =
-        JsonIgnoreCondition.WhenWritingNull;
+    options.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 
 // Register services from the ChatFlow module
