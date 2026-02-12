@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="src/ChatBot.Api/ChatBot.Api.csproj" />
+  <Project Path="src/ChatBot.Domain.Flow/ChatBot.Domain.Flow.csproj" />
+  <Project Path="src/ChatBot.Infrastructure.Flow/ChatBot.Infrastructure.Flow.csproj" />
+  <Project Path="src/ChatBot.Modules.Flow/ChatBot.Modules.Flow.csproj" />
+  <Project Path="src/ChatBot.Shared/ChatBot.Shared.csproj" />
+</Solution>

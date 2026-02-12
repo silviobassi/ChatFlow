@@ -1,7 +1,0 @@
-<Solution>
-  <Project Path="src/ChatFlow.Api/ChatFlow.Api.csproj" />
-  <Project Path="src/ChatFlow.Domain/ChatFlow.Domain.csproj" />
-  <Project Path="src/ChatFlow.Infrastructure/ChatFlow.Infrastructure.csproj" />
-  <Project Path="src/ChatFlow.Modules.Nodes/ChatFlow.Modules.Nodes.csproj" />
-  <Project Path="src/ChatFlow.Shared/ChatFlow.Shared.csproj" />
-</Solution>
