@@ -1,6 +1,6 @@
 ﻿namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
 
-public record struct SectionButton(
+public readonly record struct SectionButton(
     string Title,
     List<RowListButton> Rows
 );

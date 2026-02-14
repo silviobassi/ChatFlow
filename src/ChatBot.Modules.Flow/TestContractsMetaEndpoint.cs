@@ -95,7 +95,7 @@ public static class TestContractsMetaEndpoint
                 );
 
                 var flow = new ChatFlowRoot(
-                    Id: "fluxo_teste_1",
+                    Id: "fluxo_teste_5",
                     Name: "Fluxo de Teste 1",
                     TriggerKeyword: "menu",
                     IsActive: true
@@ -160,11 +160,13 @@ public static class TestContractsMetaEndpoint
         {
             endpoint.MapGet("/contact-option", () =>
             {
+                var contactName = new ContactName("João Silva", null, null);
+                
                 var contactNode = new ContactNode(
                     NodeId: "contact_node_1",
                     Name: "Contato de Exemplo",
                     MessageText: "Aqui estão os detalhes do contato.",
-                    ContactName: new ContactName("João Silva", null, null),
+                    ContactName: contactName,
                     Phones: [new ContactPhone("16505551234")]
                 );
 

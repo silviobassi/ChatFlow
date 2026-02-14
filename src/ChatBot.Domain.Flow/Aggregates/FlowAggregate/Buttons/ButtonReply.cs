@@ -2,7 +2,7 @@
 
 namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
 
-public record struct ButtonReply(
+public readonly record struct ButtonReply(
     string Id,
     string Title,
     TargetNode? TargetNode = null,

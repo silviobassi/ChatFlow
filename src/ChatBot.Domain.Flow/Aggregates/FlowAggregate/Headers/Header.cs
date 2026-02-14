@@ -1,6 +1,6 @@
 ﻿namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
 
-public abstract record Header(string Value)
+public abstract record Header(string Value, string Type)
 {
-    public abstract string Type { get; init; }
+    public string Type { get; } = Type;
 }

@@ -2,7 +2,7 @@
 
 namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
 
-public record struct RowListButton(
+public readonly record struct RowListButton(
     string Id,
     string Title,
     string? Description, 
