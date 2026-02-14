@@ -34,7 +34,7 @@ POST {{ChatFlow}}/add-contact-node
 Content-Type: application/json
 
 {
-  "FlowId": "fluxo_teste_2",
+  "FlowId": "fluxo_teste_4",
   "NodeId": "node_457",
   "Name": "Contact Node Example",
   "MessageText": "Here are the contact details",
