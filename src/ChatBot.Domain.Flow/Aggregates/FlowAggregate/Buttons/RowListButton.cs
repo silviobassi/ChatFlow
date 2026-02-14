@@ -6,6 +6,6 @@ public record struct RowListButton(
     string Id,
     string Title,
     string? Description, 
-    NavigationTargetNode? NavigationTargetNode,
-    NavigationTargetFlow? NavigationTargetFlow
+    TargetNode? TargetNode,
+    TargetFlow? TargetFlow
 );

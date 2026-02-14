@@ -6,5 +6,7 @@ public sealed record DocumentNode(
     string NodeId,
     string Name,
     string MessageText,
-    DocumentContent DocumentContent
+    DocumentContent DocumentContent,
+    TargetNode? TargetNode = null,
+    TargetFlow? TargetFlow = null
 ) : ChatNode(NodeId, Name, MessageText);

@@ -1,5 +1,5 @@
 ﻿namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.ValuesObject;
 
-public record struct NavigationTargetNode(string Id);
+public record struct TargetNode(string Id);
 
-public record struct NavigationTargetFlow(string Id);
+public record struct TargetFlow(string Id);

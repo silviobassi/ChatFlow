@@ -1,14 +1,15 @@
-﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate.ValuesObject;
+﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
+using ChatBot.Domain.Flow.Aggregates.FlowAggregate.ValuesObject;
 
-namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
+namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Builders;
 
 public readonly record struct RowListButtonBuilder
 {
     private string Id { get; init; }
     private string Title { get; init; }
     private string? Description { get; init; }
-    private NavigationTargetNode? NavigationTargetNode { get; init; }
-    private NavigationTargetFlow? NavigationTargetFlow { get; init; }
+    private TargetNode? NavigationTargetNode { get; init; }
+    private TargetFlow? NavigationTargetFlow { get; init; }
 
     private RowListButtonBuilder(string id, string title)
     {
@@ -26,20 +27,20 @@ public readonly record struct RowListButtonBuilder
         return this with { Description = description };
     }
 
-    public RowListButtonBuilder WithNavigationTargetNode(NavigationTargetNode navigationTargetNode)
+    public RowListButtonBuilder WithNavigationTargetNode(TargetNode targetNode)
     {
         if (NavigationTargetNode is not null)
             throw new InvalidOperationException("❌ Não é permitido definir navegação para flow e node ao mesmo tempo.");
 
-        return this with { NavigationTargetNode = navigationTargetNode };
+        return this with { NavigationTargetNode = targetNode };
     }
 
-    public RowListButtonBuilder WithNavigationTargetFlow(NavigationTargetFlow navigationTargetFlow)
+    public RowListButtonBuilder WithNavigationTargetFlow(TargetFlow targetFlow)
     {
         if (NavigationTargetNode is not null)
             throw new InvalidOperationException("❌ Não é permitido definir navegação para flow e node ao mesmo tempo.");
 
-        return this with { NavigationTargetFlow = navigationTargetFlow };
+        return this with { NavigationTargetFlow = targetFlow };
     }
 
     public RowListButton Build()

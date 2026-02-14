@@ -7,5 +7,7 @@ public sealed record ContactNode(
     string Name,
     string MessageText,
     ContactName ContactName,
-    List<ContactPhone> Phones
+    List<ContactPhone> Phones,
+    TargetNode? TargetNode = null,
+    TargetFlow? TargetFlow = null
 ) : ChatNode(NodeId, Name, MessageText);

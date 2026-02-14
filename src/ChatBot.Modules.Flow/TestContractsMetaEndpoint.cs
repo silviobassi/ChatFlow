@@ -1,4 +1,5 @@
 ﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate;
+using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Builders;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Footers;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
@@ -35,11 +36,11 @@ public static class TestContractsMetaEndpoint
                             [
                                 RowListButtonBuilder.Builder("option1", "Opção 1")
                                     .WithDescription("Descrição da Opção 1")
-                                    .WithNavigationTargetNode(new NavigationTargetNode("node_opcao_1"))
+                                    .WithNavigationTargetNode(new TargetNode("node_opcao_1"))
                                     .Build(),
                                 RowListButtonBuilder.Builder("option2", "Opção 2")
                                     .WithDescription("Descrição da Opção 2")
-                                    .WithNavigationTargetFlow(new NavigationTargetFlow("fluxo_opcao_2"))
+                                    .WithNavigationTargetFlow(new TargetFlow("fluxo_opcao_2"))
                                     .Build()
                             ]
                         ),
@@ -48,11 +49,11 @@ public static class TestContractsMetaEndpoint
                             Rows:
                             [
                                 RowListButtonBuilder.Builder("option3", "Opção 3")
-                                    .WithNavigationTargetNode(new NavigationTargetNode("node_opcao_3"))
+                                    .WithNavigationTargetNode(new TargetNode("node_opcao_3"))
                                     .Build(),
                                 RowListButtonBuilder.Builder("option4", "Opção 4")
                                     .WithDescription("Descrição da Opção 4")
-                                    .WithNavigationTargetFlow(new NavigationTargetFlow("fluxo_opcao_4"))
+                                    .WithNavigationTargetFlow(new TargetFlow("fluxo_opcao_4"))
                                     .Build()
                             ]
                         )
@@ -86,8 +87,8 @@ public static class TestContractsMetaEndpoint
                     MessageText: "Escolha uma resposta rápida:",
                     ButtonReplies:
                     [
-                        new ButtonReply("reply1", "Resposta 1"),
-                        new ButtonReply("reply2", "Resposta 2")
+                        new ButtonReply("reply1", "Resposta 1", TargetNode: new TargetNode("node_reply_1")),
+                        new ButtonReply("reply2", "Resposta 2", TargetFlow: new TargetFlow("fluxo_reply_2"))
                     ],
                     Header: new HeaderImageId("2924382942849"),
                     FooterText: new FooterText("Selecione uma resposta para continuar")

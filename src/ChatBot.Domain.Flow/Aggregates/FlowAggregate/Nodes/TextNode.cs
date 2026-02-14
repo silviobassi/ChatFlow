@@ -7,8 +7,8 @@ public record TextNode(
     string Name,
     string MessageText, // utilizar como texto do corpo da mensagem (required)
     TextContent TextContent,
-    NavigationTargetFlow? NavigationTargetFlow = null,
-    NavigationTargetNode? NavigationTargetNode = null
+    TargetFlow? TargetFlow = null,
+    TargetNode? TargetNode = null
 ) : ChatNode(NodeId, Name, MessageText);
 
 // O fluxo de texto pode ser utilizado para encerrar um fluxo, ou seja, o cliente receberá apenas uma mensagem de texto

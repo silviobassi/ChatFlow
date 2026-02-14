@@ -79,8 +79,8 @@ public static class MongoDbPersistenceConfig
         BsonClassMap.RegisterClassMap<SectionButton>();
         BsonClassMap.RegisterClassMap<RowListButton>();
 
-        BsonClassMap.RegisterClassMap<NavigationTargetNode>();
-        BsonClassMap.RegisterClassMap<NavigationTargetFlow>();
+        BsonClassMap.RegisterClassMap<TargetNode>();
+        BsonClassMap.RegisterClassMap<TargetFlow>();
 
         // Mapeamento explícito para ButtonReply para garantir que o 'Type' seja salvo
         BsonClassMap.RegisterClassMap<ButtonReply>(cm =>
