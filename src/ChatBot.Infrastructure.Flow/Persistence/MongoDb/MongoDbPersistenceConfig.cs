@@ -1,8 +1,8 @@
-﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
+﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate;
+using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Footers;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Options;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.ValuesObject;
 using MongoDB.Bson.Serialization;
 
@@ -15,7 +15,7 @@ public static class MongoDbPersistenceConfig
         // ===================================================================================
         // 1. CHAT FLOW (NOVA RAIZ DO AGREGADO)
         // ===================================================================================
-        BsonClassMap.RegisterClassMap<Domain.Flow.Aggregates.FlowAggregate.ChatFlowRoot>(cm =>
+        BsonClassMap.RegisterClassMap<ChatFlowRoot>(cm =>
         {
             cm.AutoMap();
             cm.SetIsRootClass(true); // Define que este é o documento principal no Mongo
@@ -33,12 +33,9 @@ public static class MongoDbPersistenceConfig
         BsonClassMap.RegisterClassMap<ChatNode>(cm =>
         {
             cm.AutoMap();
-            
+
             // NodeId agora é um campo normal, essencial para buscas dentro do array
             cm.MapMember(c => c.NodeId);
-
-            // Mapeia a lista privada '_options' de cada nó
-            cm.MapField("_options").SetElementName("Options");
 
             // Registra a hierarquia (Discriminator _t)
             cm.AddKnownType(typeof(ContactNode));
@@ -81,14 +78,16 @@ public static class MongoDbPersistenceConfig
         BsonClassMap.RegisterClassMap<ButtonText>();
         BsonClassMap.RegisterClassMap<SectionButton>();
         BsonClassMap.RegisterClassMap<RowListButton>();
-        BsonClassMap.RegisterClassMap<ChatOption>();
+
+        BsonClassMap.RegisterClassMap<NavigationTargetNode>();
+        BsonClassMap.RegisterClassMap<NavigationTargetFlow>();
 
         // Mapeamento explícito para ButtonReply para garantir que o 'Type' seja salvo
         BsonClassMap.RegisterClassMap<ButtonReply>(cm =>
         {
             cm.AutoMap();
             // Se você não usou 'init' na struct, descomente a linha abaixo para forçar a persistência:
-            // cm.MapMember(x => x.Type); 
+            cm.MapMember(x => x.Type); 
         });
 
         // Value Objects de Contato e Documento (Importante para ContactNode e DocumentNode)

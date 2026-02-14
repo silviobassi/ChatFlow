@@ -28,14 +28,14 @@ Accept: application/json
 GET {{ChatFlow}}//node/update
 Accept: application/json
 
-###ó
+###
 
 POST {{ChatFlow}}/add-contact-node
 Content-Type: application/json
 
 {
-  "FlowId": "fluxo_teste_4",
-  "NodeId": "node_457",
+  "FlowId": "fluxo_teste_2",
+  "NodeId": "node_001",
   "Name": "Contact Node Example",
   "MessageText": "Here are the contact details",
   "FormattedName": "João Silva",

@@ -11,16 +11,23 @@ public class ChatFlowRepository(IMongoDatabase database) : IChatFlowRepository
     // Salva o fluxo inteiro (com todos os nós dentro)
     public async Task SaveAsync(ChatFlowRoot flow)
     {
-        var filter = Builders<ChatFlowRoot>.Filter.Eq(x => x.Id, flow.Id);
+        var flowExists = await _collection.Find(x => x.Id == flow.Id).AnyAsync();
 
-        await _collection.ReplaceOneAsync(
-            filter,
-            flow,
-            new ReplaceOptions { IsUpsert = true }
-        );
+        if (flowExists) throw new InvalidOperationException($"❌ Fluxo '{flow.Id}' já existe.");
+
+        await _collection.InsertOneAsync(flow);
     }
 
-    public async Task<ChatFlowRoot?> GetByIdAsync(string flowId)
+    public async Task UpdateAsync(ChatFlowRoot flow)
+    {
+        var filter = Builders<ChatFlowRoot>.Filter.Eq(x => x.Id, flow.Id);
+        var result = await _collection.ReplaceOneAsync(filter, flow);
+
+        if (result.MatchedCount == 0)
+            throw new InvalidOperationException($"❌ Fluxo '{flow.Id}' não encontrado para atualização.");
+    }
+
+    public async Task<ChatFlowRoot?> GetFlowByIdAsync(string flowId)
     {
         return await _collection.Find(x => x.Id == flowId).FirstOrDefaultAsync();
     }

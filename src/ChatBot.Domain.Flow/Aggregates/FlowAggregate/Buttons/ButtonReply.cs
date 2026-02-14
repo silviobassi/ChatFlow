@@ -5,5 +5,5 @@ public record struct ButtonReply(
     string Title
 )
 {
-    public string Type { get; init; } = "reply";
+    public string Type { get; } = "reply";
 }

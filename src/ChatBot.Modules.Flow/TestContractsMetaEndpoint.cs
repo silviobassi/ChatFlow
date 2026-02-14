@@ -33,23 +33,34 @@ public static class TestContractsMetaEndpoint
                             Title: "Seção 1",
                             Rows:
                             [
-                                new RowListButton("option1", "Opção 1", "Descrição da Opção 1"),
-                                new RowListButton("option2", "Opção 2", "Descrição da Opção 2")
+                                RowListButtonBuilder.Builder("option1", "Opção 1")
+                                    .WithDescription("Descrição da Opção 1")
+                                    .WithNavigationTargetNode(new NavigationTargetNode("node_opcao_1"))
+                                    .Build(),
+                                RowListButtonBuilder.Builder("option2", "Opção 2")
+                                    .WithDescription("Descrição da Opção 2")
+                                    .WithNavigationTargetFlow(new NavigationTargetFlow("fluxo_opcao_2"))
+                                    .Build()
                             ]
                         ),
                         new SectionButton(
                             Title: "Seção 2",
                             Rows:
                             [
-                                new RowListButton("option3", "Opção 3", "Descrição da Opção 3"),
-                                new RowListButton("option4", "Opção 4", "Descrição da Opção 4")
+                                RowListButtonBuilder.Builder("option3", "Opção 3")
+                                    .WithNavigationTargetNode(new NavigationTargetNode("node_opcao_3"))
+                                    .Build(),
+                                RowListButtonBuilder.Builder("option4", "Opção 4")
+                                    .WithDescription("Descrição da Opção 4")
+                                    .WithNavigationTargetFlow(new NavigationTargetFlow("fluxo_opcao_4"))
+                                    .Build()
                             ]
                         )
                     ]
                 );
 
                 var flow = new ChatFlowRoot(
-                    Id: "fluxo_teste_1",
+                    Id: "fluxo_teste_4",
                     Name: "Fluxo de Teste 1",
                     TriggerKeyword: "menu",
                     IsActive: true
