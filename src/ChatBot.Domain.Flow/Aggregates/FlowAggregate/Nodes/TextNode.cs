@@ -2,7 +2,7 @@
 
 namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
 
-public record TextNode(
+public sealed record TextNode(
     string NodeId,
     string Name,
     string MessageText, // utilizar como texto do corpo da mensagem (required)

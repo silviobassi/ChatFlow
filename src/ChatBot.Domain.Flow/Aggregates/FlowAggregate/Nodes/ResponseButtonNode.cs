@@ -4,7 +4,7 @@ using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
 
 namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
 
-public record ResponseButtonNode(
+public sealed record ResponseButtonNode(
     string NodeId,
     string Name,
     string MessageText, // utilizar como body text (required

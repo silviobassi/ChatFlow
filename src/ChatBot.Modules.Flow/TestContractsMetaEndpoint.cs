@@ -1,5 +1,4 @@
 ﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Builders;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Footers;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
@@ -34,27 +33,34 @@ public static class TestContractsMetaEndpoint
                             Title: "Seção 1",
                             Rows:
                             [
-                                RowListButtonBuilder.Builder("option1", "Opção 1")
-                                    .WithDescription("Descrição da Opção 1")
-                                    .WithNavigationTargetNode(new TargetNode("node_opcao_1"))
-                                    .Build(),
-                                RowListButtonBuilder.Builder("option2", "Opção 2")
-                                    .WithDescription("Descrição da Opção 2")
-                                    .WithNavigationTargetFlow(new TargetFlow("fluxo_opcao_2"))
-                                    .Build()
+                                RowListButton.CreateWithTargetFlow(
+                                    "option1",
+                                    "Opção 1",
+                                    new TargetFlow("fluxo_opcao_1")
+                                ),
+                                RowListButton.CreateWithTargetNode(
+                                    "option2",
+                                    "Opção 2",
+                                    new TargetNode("node_opcao_2"),
+                                    "Descrição da Opção 2"
+                                )
                             ]
                         ),
                         new SectionButton(
                             Title: "Seção 2",
                             Rows:
                             [
-                                RowListButtonBuilder.Builder("option3", "Opção 3")
-                                    .WithNavigationTargetNode(new TargetNode("node_opcao_3"))
-                                    .Build(),
-                                RowListButtonBuilder.Builder("option4", "Opção 4")
-                                    .WithDescription("Descrição da Opção 4")
-                                    .WithNavigationTargetFlow(new TargetFlow("fluxo_opcao_4"))
-                                    .Build()
+                                RowListButton.CreateWithTargetNode(
+                                    "option3",
+                                    "Opção 3",
+                                    new TargetNode("node_opcao_3"),
+                                    "Descrição da Opção 3"
+                                ),
+                                RowListButton.CreateWithTargetFlow(
+                                    "option4",
+                                    "Opção 4",
+                                    new TargetFlow("fluxo_opcao_4")
+                                )
                             ]
                         )
                     ]
@@ -67,9 +73,9 @@ public static class TestContractsMetaEndpoint
                     IsActive: true
                 );
 
-                flow.AddNode(listButtonNode);
+                /*flow.AddNode(listButtonNode);
 
-                await repository.SaveAsync(flow);
+                await repository.SaveAsync(flow);*/
 
                 var listButtonOptionDto = listButtonNode.MapNodeToDto("5511999999999");
                 return Results.Ok(listButtonOptionDto);
@@ -87,8 +93,16 @@ public static class TestContractsMetaEndpoint
                     MessageText: "Escolha uma resposta rápida:",
                     ButtonReplies:
                     [
-                        new ButtonReply("reply1", "Resposta 1", TargetNode: new TargetNode("node_reply_1")),
-                        new ButtonReply("reply2", "Resposta 2", TargetFlow: new TargetFlow("fluxo_reply_2"))
+                        ButtonReply.CreateWithTargetNode(
+                            "resposta1",
+                            "Resposta 1",
+                            new TargetNode("node_resposta_1")
+                        ),
+                        ButtonReply.CreateWithTargetFlow(
+                            "resposta2",
+                            "Resposta 2",
+                            new TargetFlow("fluxo_resposta_2")
+                        )
                     ],
                     Header: new HeaderImageId("2924382942849"),
                     FooterText: new FooterText("Selecione uma resposta para continuar")
@@ -101,9 +115,9 @@ public static class TestContractsMetaEndpoint
                     IsActive: true
                 );
 
-                flow.AddNode(responseButtonNode);
+                /*flow.AddNode(responseButtonNode);
 
-                await repository.SaveAsync(flow);
+                await repository.SaveAsync(flow);*/
 
                 var responseButtonOptionDto = responseButtonNode.MapNodeToDto("5511999999999");
 
@@ -161,7 +175,7 @@ public static class TestContractsMetaEndpoint
             endpoint.MapGet("/contact-option", () =>
             {
                 var contactName = new ContactName("João Silva", null, null);
-                
+
                 var contactNode = new ContactNode(
                     NodeId: "contact_node_1",
                     Name: "Contato de Exemplo",

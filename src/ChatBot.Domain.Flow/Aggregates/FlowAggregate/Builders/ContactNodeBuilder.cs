@@ -3,78 +3,57 @@ using ChatBot.Domain.Flow.Aggregates.FlowAggregate.ValuesObject;
 
 namespace ChatBot.Domain.Flow.Aggregates.FlowAggregate.Builders;
 
-public readonly record struct ContactNodeBuilder
+public sealed class ContactNodeBuilder
 {
-    private string NodeId { get; init; }
-    private string Name { get; init; }
-    private string MessageText { get; init; }
-    private ContactName ContactName { get; init; }
-    private List<ContactPhone> Phones { get; init; }
-    private TargetNode? TargetNode { get; init; }
-    private TargetFlow? TargetFlow { get; init; }
+    private string _nodeId = string.Empty;
+    private string _name = string.Empty;
+    private string _messageText = string.Empty;
+    private ContactName _contactName = null!;
+    private readonly List<ContactPhone> _phones = [];
+    private TargetNode? _targetNode;
+    private TargetFlow? _targetFlow;
 
-    private ContactNodeBuilder(string nodeId, string name, string messageText, ContactName contactName)
+    public ContactNodeBuilder WithNodeId(string nodeId)
     {
-        NodeId = nodeId;
-        Name = name;
-        MessageText = messageText;
-        ContactName = contactName;
-        Phones = [];
-        TargetNode = null;
-        TargetFlow = null;
+        _nodeId = nodeId;
+        return this;
     }
 
-    public static ContactNodeBuilder Builder(string nodeId, string name, string messageText, ContactName contactName)
-        => new(nodeId, name, messageText, contactName);
-
-    public ContactNodeBuilder WithPhone(ContactPhone phone)
+    public ContactNodeBuilder WithName(string name)
     {
-        var updatedPhones = new List<ContactPhone>(Phones) { phone };
-        return this with { Phones = updatedPhones };
+        _name = name;
+        return this;
     }
 
-    public ContactNodeBuilder WithPhones(IEnumerable<ContactPhone> phones)
+    public ContactNodeBuilder WithMessageText(string messageText)
     {
-        var updatedPhones = new List<ContactPhone>(Phones);
-        updatedPhones.AddRange(phones);
-        return this with { Phones = updatedPhones };
+        _messageText = messageText;
+        return this;
+    }
+
+    public ContactNodeBuilder WithContactName(ContactName contactName)
+    {
+        _contactName = contactName;
+        return this;
+    }
+
+    public ContactNodeBuilder AddPhone(ContactPhone phone)
+    {
+        _phones.Add(phone);
+        return this;
     }
 
     public ContactNodeBuilder WithTargetNode(TargetNode targetNode)
     {
-        return this with
-        {
-            TargetNode = targetNode, 
-            TargetFlow = null
-        };
+        _targetNode = targetNode;
+        return this;
     }
 
     public ContactNodeBuilder WithTargetFlow(TargetFlow targetFlow)
     {
-        return this with
-        {
-            TargetFlow = targetFlow, 
-            TargetNode = null
-        };
+        _targetFlow = targetFlow;
+        return this;
     }
 
-    public ContactNode Build()
-    {
-        if (string.IsNullOrWhiteSpace(NodeId))
-            throw new InvalidOperationException("O NodeId é obrigatório.");
-
-        if (string.IsNullOrWhiteSpace(Name))
-            throw new InvalidOperationException("O Name é obrigatório.");
-
-        if (string.IsNullOrWhiteSpace(MessageText))
-            throw new InvalidOperationException("O MessageText é obrigatório.");
-
-        if (string.IsNullOrWhiteSpace(ContactName.FormattedName))
-            throw new InvalidOperationException("O FormattedName do contato é obrigatório.");
-
-        if (Phones.Count == 0)
-            throw new InvalidOperationException("É obrigatório informar ao menos um telefone para o contato.");
-
-        return new ContactNode(NodeId, Name, MessageText, ContactName, Phones, TargetNode, TargetFlow);
-    }
+    public ContactNode Build() => new(_nodeId, _name, _messageText, _contactName, _phones, _targetNode, _targetFlow);
 }
