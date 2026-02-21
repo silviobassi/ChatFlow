@@ -45,12 +45,14 @@ public sealed class ContactNodeBuilder
 
     public ContactNodeBuilder WithTargetNode(TargetNode targetNode)
     {
+        _targetFlow = null; // Garantir que apenas um dos destinos seja definido
         _targetNode = targetNode;
         return this;
     }
 
     public ContactNodeBuilder WithTargetFlow(TargetFlow targetFlow)
     {
+        _targetNode = null; // Garantir que apenas um dos destinos seja definido
         _targetFlow = targetFlow;
         return this;
     }
