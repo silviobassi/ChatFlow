@@ -141,7 +141,7 @@ public static class TestContractsMetaEndpoint
             {
                 var documentContent = new DocumentContent(
                     Filename: "exemplo.pdf",
-                    Media: new DocumentLink("https://example.com/document.doc"),
+                    Media: new DocumentId("106540352242922"),
                     Caption: "Este é um documento de exemplo."
                 );
                 
