@@ -1,4 +1,4 @@
-﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
+﻿using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Nodes;
 using ChatBot.Modules.Flow.Features.MapFlow.Options.TextOption;
 
 namespace ChatBot.Modules.Flow.Features.MapFlow.Mappers;

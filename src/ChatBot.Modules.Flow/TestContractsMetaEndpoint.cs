@@ -1,11 +1,11 @@
-﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Builders;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Footers;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Repositories;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.ValuesObject;
+﻿using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Builders;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Buttons;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Footers;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Headers;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Nodes;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Repositories;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.ValuesObject;
 using ChatBot.Modules.Flow.Features.MapFlow;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -67,7 +67,7 @@ public static class TestContractsMetaEndpoint
                     ]
                 );
 
-                var flow = new ChatFlowRoot(
+                var flow = new FlowEngineRoot(
                     Id: "fluxo_teste_4",
                     Name: "Fluxo de Teste 1",
                     TriggerKeyword: "menu",
@@ -112,7 +112,7 @@ public static class TestContractsMetaEndpoint
                     FooterText: new FooterText("Selecione uma resposta para continuar")
                 );
 
-                var flow = new ChatFlowRoot(
+                var flow = new FlowEngineRoot(
                     Id: "fluxo_teste_5",
                     Name: "Fluxo de Teste 1",
                     TriggerKeyword: "menu",

@@ -1,5 +1,5 @@
-﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
+﻿using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Buttons;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Nodes;
 using ChatBot.Modules.Flow.Features.MapFlow.Options.ListButtonOption;
 
 namespace ChatBot.Modules.Flow.Features.MapFlow.Mappers;

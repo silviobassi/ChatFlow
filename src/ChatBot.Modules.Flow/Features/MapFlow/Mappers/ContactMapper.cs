@@ -1,5 +1,5 @@
-﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.ValuesObject;
+﻿using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Nodes;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.ValuesObject;
 using ChatBot.Modules.Flow.Features.MapFlow.Options.ContactOption;
 
 namespace ChatBot.Modules.Flow.Features.MapFlow.Mappers;

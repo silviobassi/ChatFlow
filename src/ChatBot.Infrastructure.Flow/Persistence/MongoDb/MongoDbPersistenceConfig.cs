@@ -1,9 +1,9 @@
-﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Footers;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.ValuesObject;
+﻿using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Buttons;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Footers;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Headers;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Nodes;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.ValuesObject;
 using MongoDB.Bson.Serialization;
 
 namespace ChatBot.Infrastructure.Flow.Persistence.MongoDb;
@@ -15,7 +15,7 @@ public static class MongoDbPersistenceConfig
         // ===================================================================================
         // 1. CHAT FLOW (NOVA RAIZ DO AGREGADO)
         // ===================================================================================
-        BsonClassMap.RegisterClassMap<ChatFlowRoot>(cm =>
+        BsonClassMap.RegisterClassMap<FlowEngineRoot>(cm =>
         {
             cm.AutoMap();
             cm.SetIsRootClass(true); // Define que este é o documento principal no Mongo

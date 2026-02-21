@@ -1,6 +1,6 @@
-﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Footers;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
-using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Nodes;
+﻿using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Footers;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Headers;
+using ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate.Nodes;
 using ChatBot.Modules.Flow.Features.MapFlow.Options;
 
 namespace ChatBot.Modules.Flow.Features.MapFlow.Mappers;
