@@ -72,26 +72,23 @@ public static class TestContractsMetaEndpoint
         {
             endpoint.MapGet("/response-button-option", async (IChatFlowRepository repository) =>
             {
-                var responseButtonNode = new ResponseButtonNode(
-                    NodeId: "resposta_rapida_1",
-                    Name: "Resposta Rápida",
-                    MessageText: "Escolha uma resposta rápida:",
-                    ButtonReplies:
-                    [
-                        ButtonReply.CreateWithTargetNode(
-                            "resposta1",
-                            "Resposta 1",
-                            new TargetNode("node_resposta_1")
-                        ),
-                        ButtonReply.CreateWithTargetFlow(
-                            "resposta2",
-                            "Resposta 2",
-                            new TargetFlow("fluxo_resposta_2")
-                        )
-                    ],
-                    Header: new HeaderImageId("2924382942849"),
-                    FooterText: new FooterText("Selecione uma resposta para continuar")
-                );
+                var responseButtonNode = new ResponseButtonNodeBuilder()
+                    .WithNodeId("resposta_rapida_1")
+                    .WithName("Resposta Rápida")
+                    .WithMessageText("Escolha uma resposta rápida:")
+                    .AddButtonReply(ButtonReply.CreateWithTargetNode(
+                        "resposta1",
+                        "Resposta 1",
+                        new TargetNode("node_resposta_1")
+                    ))
+                    .AddButtonReply(ButtonReply.CreateWithTargetFlow(
+                        "resposta2",
+                        "Resposta 2",
+                        new TargetFlow("fluxo_resposta_2")
+                    ))
+                    .WithHeader(new HeaderImageId("2924382942849"))
+                    .WithFooterText(new FooterText("Selecione uma resposta para continuar"))
+                    .Build();
 
                 var flow = new FlowEngineRoot(
                     Id: "fluxo_teste_5",
