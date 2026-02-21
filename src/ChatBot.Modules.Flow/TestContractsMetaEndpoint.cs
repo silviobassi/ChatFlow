@@ -1,4 +1,5 @@
 ﻿using ChatBot.Domain.Flow.Aggregates.FlowAggregate;
+using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Builders;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Buttons;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Footers;
 using ChatBot.Domain.Flow.Aggregates.FlowAggregate.Headers;
@@ -182,13 +183,14 @@ public static class TestContractsMetaEndpoint
             {
                 var contactName = new ContactName("João Silva", null, null);
 
-                var contactNode = new ContactNode(
-                    NodeId: "contact_node_1",
-                    Name: "Contato de Exemplo",
-                    MessageText: "Aqui estão os detalhes do contato.",
-                    ContactName: contactName,
-                    Phones: [new ContactPhone("16505551234")]
-                );
+                var contactNode = new ContactNodeBuilder()
+                    .WithNodeId("contact_node_1")
+                    .WithName("Contato de Exemplo")
+                    .WithMessageText("Aqui estão os detalhes do contato.")
+                    .WithContactName(contactName)
+                    .AddPhone(new ContactPhone("16505551234"))
+                    .AddPhone(new ContactPhone("16505554321", Phone: "1799667575"))
+                    .Build();
 
                 var contactOptionDto = contactNode.MapNodeToDto("+16505551234");
 
