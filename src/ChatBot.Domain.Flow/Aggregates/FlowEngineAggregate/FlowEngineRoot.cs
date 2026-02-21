@@ -2,12 +2,13 @@
 
 namespace ChatBot.Domain.Flow.Aggregates.FlowEngineAggregate;
 
+// insert status transborder para controlar o status do fluxo (e.g.: "bot", "active"", "inactive" or "transborder")
 public sealed record FlowEngineRoot(
-    string Id,          // Identificador do Fluxo (ex: "onboarding_v1")
-    string Name,        // Nome legível (ex: "Fluxo de Onboarding 2026")
+    string Id, // Identificador do Fluxo (ex: "onboarding_v1")
+    string Name, // Nome legível (ex: "Fluxo de Onboarding 2026")
     // criar propriedade para mapear campanhas ADS
     string TriggerKeyword, // Palavra-chave que inicia este fluxo (ex: "oi", "menu")
-    bool IsActive, 
+    bool IsActive,
     long TenantId,
     long ConfigurationId,
     string? CampaignId = null
@@ -15,7 +16,7 @@ public sealed record FlowEngineRoot(
 {
     // A lista de nós, agora vive DENTRO do fluxo
     private readonly List<ChatNode> _nodes = [];
-    
+
     public IReadOnlyCollection<ChatNode> Nodes => _nodes.AsReadOnly();
 
     // Método de Domínio para adicionar nós (garante integridade)
@@ -25,6 +26,7 @@ public sealed record FlowEngineRoot(
         {
             throw new InvalidOperationException($"O nó '{node.NodeId}' já existe neste fluxo.");
         }
+
         _nodes.Add(node);
     }
 
@@ -36,6 +38,7 @@ public sealed record FlowEngineRoot(
         {
             throw new InvalidOperationException($"O nó '{nodeId}' não existe neste fluxo.");
         }
+
         _nodes.Remove(node);
     }
 }

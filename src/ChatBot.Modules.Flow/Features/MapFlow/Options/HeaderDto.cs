@@ -10,7 +10,7 @@ public record HeaderDto([property: JsonPropertyName("type")] string Type);
 
 public record HeaderTextDto(
     [property: JsonPropertyName("text")] string Text,
-    [property: JsonPropertyName("type")] string Type = "text"
+    string Type = "text"
 ) : HeaderDto(Type);
 
 public record HeaderImageLinkDto(
