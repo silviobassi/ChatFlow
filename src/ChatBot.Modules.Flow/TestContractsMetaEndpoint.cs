@@ -139,16 +139,18 @@ public static class TestContractsMetaEndpoint
         {
             endpoint.MapGet("/document-option", () =>
             {
-                var documentNode = new DocumentNode(
-                    NodeId: "opcoes_menu_1",
-                    Name: "Documento de Exemplo",
-                    MessageText: "Aqui está um documento de exemplo para você.",
-                    DocumentContent: new DocumentContent(
-                        Filename: "opcoes_menu_1.docx",
-                        Media: new DocumentId("292384092384"),
-                        Caption: "Este é um documento de exemplo."
-                    )
+                var documentContent = new DocumentContent(
+                    Filename: "exemplo.pdf",
+                    Media: new DocumentId("1376223850470843"),
+                    Caption: "Este é um documento de exemplo."
                 );
+                
+                var documentNode = new DocumentNodeBuilder()
+                    .WithNodeId("document_node_1")
+                    .WithName("Documento de Exemplo")
+                    .WithMessageText("Aqui está um documento de exemplo para você.")
+                    .WithDocumentContent(documentContent)
+                    .Build();
 
                 var documentOptionDto = documentNode.MapNodeToDto("+16505551234");
 
