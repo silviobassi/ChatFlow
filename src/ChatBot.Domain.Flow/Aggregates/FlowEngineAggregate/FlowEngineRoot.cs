@@ -8,9 +8,9 @@ public sealed record FlowEngineRoot(
     // criar propriedade para mapear campanhas ADS
     string TriggerKeyword, // Palavra-chave que inicia este fluxo (ex: "oi", "menu")
     bool IsActive, 
-    int CampaignId,
     long TenantId,
-    long ConfigurationId
+    long ConfigurationId,
+    string? CampaignId = null
 )
 {
     // A lista de nós, agora vive DENTRO do fluxo

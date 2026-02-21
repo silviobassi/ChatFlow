@@ -21,60 +21,41 @@ public static class TestContractsMetaEndpoint
         {
             endpoint.MapGet("/list-button-option", async (IChatFlowRepository repository) =>
             {
-                var listButtonNode = new ListButtonNode(
-                    NodeId: "opcoes_menu_1",
-                    Name: "Opções de Menu",
-                    MessageText: "Escolha uma opção:",
-                    ButtonText: new ButtonText("Ver opções"),
-                    HeaderText: new HeaderText("Opções disponíveis"),
-                    FooterText: new FooterText("Selecione uma opção para continuar"),
-                    SectionsButtons:
-                    [
-                        new SectionButton(
-                            Title: "Seção 1",
-                            Rows:
-                            [
-                                RowListButton.CreateWithTargetFlow(
-                                    "option1",
-                                    "Opção 1",
-                                    new TargetFlow("fluxo_opcao_1")
-                                ),
-                                RowListButton.CreateWithTargetNode(
-                                    "option2",
-                                    "Opção 2",
-                                    new TargetNode("node_opcao_2"),
-                                    "Descrição da Opção 2"
-                                )
-                            ]
-                        ),
-                        new SectionButton(
-                            Title: "Seção 2",
-                            Rows:
-                            [
-                                RowListButton.CreateWithTargetNode(
-                                    "option3",
-                                    "Opção 3",
-                                    new TargetNode("node_opcao_3"),
-                                    "Descrição da Opção 3"
-                                ),
-                                RowListButton.CreateWithTargetFlow(
-                                    "option4",
-                                    "Opção 4",
-                                    new TargetFlow("fluxo_opcao_4")
-                                )
-                            ]
-                        )
-                    ]
+                var sectionButton = new SectionButton("Seção 1");
+                sectionButton.AddRow(
+                    RowListButton.CreateWithTargetFlow("option1",
+                        "Opção 1",
+                        new TargetFlow("fluxo_opcao_1"),
+                        "Descrição da Opção 1"
+                    )
                 );
+
+                sectionButton.AddRow(
+                    RowListButton.CreateWithTargetNode(
+                        "Opção 2",
+                        "Opção 2",
+                        new TargetNode("node_opcao_2")
+                    )
+                );
+
+                var listButtonNode = new ListButtonNodeBuilder()
+                    .WithNodeId("opcoes_menu_1")
+                    .WithName("Opções de Menu")
+                    .WithMessageText("Escolha uma opção:")
+                    .WithButtonText(new ButtonText("Ver opções"))
+                    .WithHeaderText(new HeaderText("Opções disponíveis"))
+                    .WithFooterText(new FooterText("Selecione uma opção para continuar"))
+                    .AddSectionButton(sectionButton)
+                    .Build();
 
                 var flow = new FlowEngineRoot(
                     Id: "fluxo_teste_4",
                     Name: "Fluxo de Teste 1",
                     TriggerKeyword: "menu",
                     IsActive: true,
-                    CampaignId: 1,
                     TenantId: 1,
-                    ConfigurationId: 1
+                    ConfigurationId: 1,
+                    CampaignId: "12233333"
                 );
 
                 /*flow.AddNode(listButtonNode);
@@ -117,9 +98,9 @@ public static class TestContractsMetaEndpoint
                     Name: "Fluxo de Teste 1",
                     TriggerKeyword: "menu",
                     IsActive: true,
-                    CampaignId: 1,
                     TenantId: 1,
-                    ConfigurationId: 1
+                    ConfigurationId: 1,
+                    CampaignId: "12233333"
                 );
 
                 /*flow.AddNode(responseButtonNode);
@@ -144,7 +125,7 @@ public static class TestContractsMetaEndpoint
                     Media: new DocumentId("106540352242922"),
                     Caption: "Este é um documento de exemplo."
                 );
-                
+
                 var documentNode = new DocumentNodeBuilder()
                     .WithNodeId("document_node_1")
                     .WithName("Documento de Exemplo")
