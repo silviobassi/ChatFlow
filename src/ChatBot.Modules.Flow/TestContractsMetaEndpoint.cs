@@ -70,7 +70,10 @@ public static class TestContractsMetaEndpoint
                     Id: "fluxo_teste_4",
                     Name: "Fluxo de Teste 1",
                     TriggerKeyword: "menu",
-                    IsActive: true
+                    IsActive: true,
+                    CampaignId: 1,
+                    TenantId: 1,
+                    ConfigurationId: 1
                 );
 
                 /*flow.AddNode(listButtonNode);
@@ -112,7 +115,10 @@ public static class TestContractsMetaEndpoint
                     Id: "fluxo_teste_5",
                     Name: "Fluxo de Teste 1",
                     TriggerKeyword: "menu",
-                    IsActive: true
+                    IsActive: true,
+                    CampaignId: 1,
+                    TenantId: 1,
+                    ConfigurationId: 1
                 );
 
                 /*flow.AddNode(responseButtonNode);

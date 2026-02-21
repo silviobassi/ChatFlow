@@ -7,10 +7,13 @@ public sealed record ChatFlowRoot(
     string Name,        // Nome legível (ex: "Fluxo de Onboarding 2026")
     // criar propriedade para mapear campanhas ADS
     string TriggerKeyword, // Palavra-chave que inicia este fluxo (ex: "oi", "menu")
-    bool IsActive
+    bool IsActive, 
+    int CampaignId,
+    long TenantId,
+    long ConfigurationId
 )
 {
-    // A lista de nós agora vive DENTRO do fluxo
+    // A lista de nós, agora vive DENTRO do fluxo
     private readonly List<ChatNode> _nodes = [];
     
     public IReadOnlyCollection<ChatNode> Nodes => _nodes.AsReadOnly();
