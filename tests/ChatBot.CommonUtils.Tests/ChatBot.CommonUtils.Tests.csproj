@@ -12,11 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\ChatBot.Domain.Flow\ChatBot.Domain.Flow.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\ChatBot.Domain.Flow\ChatBot.Domain.Flow.csproj" />
+      <ProjectReference Include="..\..\src\Backend\ChatBot.Domain.Flow\ChatBot.Domain.Flow.csproj" />
     </ItemGroup>
 
 </Project>

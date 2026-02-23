@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\ChatBot.Domain.Flow\ChatBot.Domain.Flow.csproj"/>
+        <ProjectReference Include="..\..\src\Backend\ChatBot.Domain.Flow\ChatBot.Domain.Flow.csproj" />
         <ProjectReference Include="..\ChatBot.CommonUtils.Tests\ChatBot.CommonUtils.Tests.csproj"/>
     </ItemGroup>
 

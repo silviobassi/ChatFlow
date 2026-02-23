@@ -1,9 +1,9 @@
 <Solution>
-  <Project Path="src/ChatBot.Api/ChatBot.Api.csproj" />
-  <Project Path="src/ChatBot.Domain.Flow/ChatBot.Domain.Flow.csproj" />
-  <Project Path="src/ChatBot.Infrastructure.Flow/ChatBot.Infrastructure.Flow.csproj" />
-  <Project Path="src/ChatBot.Modules.Flow/ChatBot.Modules.Flow.csproj" />
-  <Project Path="src/ChatBot.Shared/ChatBot.Shared.csproj" />
+  <Project Path="src/Backend/ChatBot.Api/ChatBot.Api.csproj" />
+  <Project Path="src/Backend/ChatBot.Domain.Flow/ChatBot.Domain.Flow.csproj" />
+  <Project Path="src/Backend/ChatBot.Infrastructure.Flow/ChatBot.Infrastructure.Flow.csproj" />
+  <Project Path="src/Backend/ChatBot.Modules.Flow/ChatBot.Modules.Flow.csproj" />
+  <Project Path="src/Backend/ChatBot.Shared/ChatBot.Shared.csproj" />
   <Project Path="tests/ChatBot.CommonUtils.Tests/ChatBot.CommonUtils.Tests.csproj" />
   <Project Path="tests/ChatBot.Domain.Flow.Tests/ChatBot.Domain.Flow.Tests.csproj" />
 </Solution>
