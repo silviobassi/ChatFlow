@@ -1,10 +1,10 @@
-﻿using ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.Events;
-using ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.states;
-using ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.ValuesObject;
+﻿using ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.Events;
+using ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.states;
+using ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.ValuesObject;
 
-namespace ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate;
+namespace ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate;
 
-public sealed class ChatSessionRoot : AggregateRoot
+public sealed class ChatConversationRoot : AggregateRoot
 {
     private readonly ChatSessionRootState _state = new();
 

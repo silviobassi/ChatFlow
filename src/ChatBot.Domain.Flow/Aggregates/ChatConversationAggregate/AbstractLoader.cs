@@ -1,6 +1,6 @@
-﻿using ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.Events;
+﻿using ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.Events;
 
-namespace ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate;
+namespace ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate;
 
 public abstract class AbstractLoader
 {

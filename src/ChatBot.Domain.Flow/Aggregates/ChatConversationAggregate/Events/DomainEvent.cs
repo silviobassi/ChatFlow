@@ -1,4 +1,4 @@
-﻿namespace ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.Events;
+﻿namespace ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.Events;
 
 public abstract record DomainEvent : IDomainEvent
 {

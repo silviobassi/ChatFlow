@@ -1,7 +1,7 @@
-﻿using ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.Events;
-using ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.ValuesObject;
+﻿using ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.Events;
+using ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.ValuesObject;
 
-namespace ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.states;
+namespace ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.states;
 
 internal sealed class ChatSessionRootState
 {

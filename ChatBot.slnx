@@ -4,4 +4,6 @@
   <Project Path="src/ChatBot.Infrastructure.Flow/ChatBot.Infrastructure.Flow.csproj" />
   <Project Path="src/ChatBot.Modules.Flow/ChatBot.Modules.Flow.csproj" />
   <Project Path="src/ChatBot.Shared/ChatBot.Shared.csproj" />
+  <Project Path="tests/ChatBot.CommonUtils.Tests/ChatBot.CommonUtils.Tests.csproj" />
+  <Project Path="tests/ChatBot.Domain.Flow.Tests/ChatBot.Domain.Flow.Tests.csproj" />
 </Solution>

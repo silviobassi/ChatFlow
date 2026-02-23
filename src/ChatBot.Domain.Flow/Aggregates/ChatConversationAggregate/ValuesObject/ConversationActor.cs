@@ -1,4 +1,4 @@
-﻿namespace ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate.ValuesObject;
+﻿namespace ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.ValuesObject;
 
 public sealed record ConversationActor
 {
