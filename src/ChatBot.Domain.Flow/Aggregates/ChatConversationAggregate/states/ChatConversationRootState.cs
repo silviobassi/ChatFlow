@@ -3,7 +3,7 @@ using ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.ValuesObject;
 
 namespace ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate.states;
 
-internal sealed class ChatSessionRootState
+internal sealed class ChatConversationRootState
 {
     internal int Version { get; private set; } = -1;
 
