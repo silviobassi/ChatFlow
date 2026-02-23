@@ -14,9 +14,6 @@ public sealed class ChatSessionRoot : AggregateRoot
     public CurrentNode CurrentNode => _state.CurrentNode;
     public ConversationActor ConversationActor => _state.ConversationActor;
     public MessageText MessageText => _state.MessageText;
-    public DateTime CreatedAt => _state.CreatedAt;
-    public DateTime LastInteractionAt => _state.LastInteractionAt;
-
     public bool IsActive => _state.IsActive;
 
     /*

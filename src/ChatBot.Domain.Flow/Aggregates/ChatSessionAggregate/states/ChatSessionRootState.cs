@@ -11,8 +11,6 @@ internal sealed class ChatSessionRootState
     internal CurrentNode CurrentNode { get; private set; }
     internal ConversationActor ConversationActor { get; private set; } = null!;
     internal MessageText MessageText { get; private set; }
-    internal DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
-    internal DateTime LastInteractionAt { get; private set; } = DateTime.UtcNow;
 
     internal bool IsActive { get; private set; }
     
