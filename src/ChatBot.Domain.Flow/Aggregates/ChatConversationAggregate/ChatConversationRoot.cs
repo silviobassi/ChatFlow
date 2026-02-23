@@ -6,7 +6,7 @@ namespace ChatBot.Domain.Flow.Aggregates.ChatConversationAggregate;
 
 public sealed class ChatConversationRoot : AggregateRoot
 {
-    private readonly ChatSessionRootState _state = new();
+    private readonly ChatConversationRootState _state = new();
 
     public SessionId SessionId { get; private set; }
 
@@ -24,6 +24,8 @@ public sealed class ChatConversationRoot : AggregateRoot
      * - TransferToHumanCommand
      * - EndChatSessionCommand
      */
+
+    public int GetVersion() => _state.Version;
 
     protected override void When(IDomainEvent @event)
     {
