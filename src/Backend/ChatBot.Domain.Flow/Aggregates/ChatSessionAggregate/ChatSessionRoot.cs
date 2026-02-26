@@ -1,4 +1,6 @@
-﻿namespace ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate;
+﻿using E7.EasyResult;
+
+namespace ChatBot.Domain.Flow.Aggregates.ChatSessionAggregate;
 
 /// <summary>
 /// Aggregate root representing an active chat session between a user and the bot.
@@ -82,14 +84,22 @@ public sealed class ChatSessionRoot
     /// <exception cref="InvalidOperationException">
     /// Thrown when <paramref name="nextNodeId"/> is null/empty or the session is inactive.
     /// </exception>
-    public void TransitionToNode(string nextNodeId)
+    public Result TransitionToNode(string nextNodeId)
     {
+        List<Notification> errors = [];
+
+        if (!IsActive)
+            errors.Add(new Notification("Sessao.Inativa", "Não é possível transicionar uma sessão inativa."));
+
         if (string.IsNullOrEmpty(nextNodeId))
-            throw new InvalidOperationException("O ID do próximo nó não pode ser nulo ou vazio.");
-        if (!IsActive) throw new InvalidOperationException("Sessão inativa.");
+            errors.Add(new Notification("No.Invalido", "O ID do nó não pode ser nulo ou vazio."));
+
+        if (errors.Count != 0) return errors;
 
         CurrentNodeId = nextNodeId;
         LastInteractionAt = DateTime.UtcNow;
+
+        return Result.Success();
     }
 
     /// <summary>
@@ -101,15 +111,24 @@ public sealed class ChatSessionRoot
     /// <exception cref="InvalidOperationException">
     /// Thrown when <paramref name="nextFlowId"/> is null/empty or the session is inactive.
     /// </exception>
-    public void TransitionToFlow(string nextFlowId, string startNodeId)
+    public Result TransitionToFlow(string nextFlowId, string startNodeId)
     {
+        List<Notification> errors = [];
+
+        // must be exception
+        if (!IsActive)
+            errors.Add(new Notification("Sessao.Inativa", "Não é possível transicionar uma sessão inativa."));
+
         if (string.IsNullOrEmpty(nextFlowId))
-            throw new InvalidOperationException("O ID do próximo fluxo não pode ser nulo ou vazio.");
-        if (!IsActive) throw new InvalidOperationException("Sessão inativa.");
+            errors.Add(new Notification("No.Invalido", "O ID do fluxo não pode ser nulo ou vazio."));
+
+        if (errors.Count != 0) return errors;
 
         CurrentFlowId = nextFlowId;
         CurrentNodeId = startNodeId;
         LastInteractionAt = DateTime.UtcNow;
+
+        return Result.Success();
     }
 
     /// <summary>
